@@ -20,8 +20,9 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(signalingHandler, "/ws/signaling")
-                .setAllowedOriginPatterns("*");    }
+        registry.addHandler(signalingHandler, "/ws/signaling", "/ws/signaling/websocket")
+                .setAllowedOriginPatterns("*")
+                .withSockJS();}
 
     @Bean
     public ServletServerContainerFactoryBean createWebSocketContainer() {
